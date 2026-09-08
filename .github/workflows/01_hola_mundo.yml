@@ -4,7 +4,7 @@ on:
       -main
 jobs:
   saludo:
-    runs-on: ubunto-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Imprimr mensaje
         run: echo "Hola mundo desde GitHub Actions"

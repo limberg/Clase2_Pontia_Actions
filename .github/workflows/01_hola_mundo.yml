@@ -1,10 +1,10 @@
 on:
   push:
     branches:
-      -main
+      - main
 jobs:
   saludo:
     runs-on: ubuntu-latest
     steps:
-      - name: Imprimr mensaje
+      - name: Imprimir mensaje
         run: echo "Hola mundo desde GitHub Actions"

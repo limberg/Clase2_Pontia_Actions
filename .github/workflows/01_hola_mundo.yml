@@ -1,10 +1,20 @@
+# Evento que inicia el workflow
 on:
+  # Se ejecuta cuando alguien hace push
   push:
+    # Solo en la rama main
     branches:
       - main
+
+# Lista de trabajos
 jobs:
+  # Nombre del trabajo
   saludo:
+    # Sistema operativo donde se ejecutara
     runs-on: ubuntu-latest
+    # Pasos del trabajo
     steps:
+      # Nombre del paso
       - name: Imprimir mensaje
+        # Comando que se ejecutara en la terminal
         run: echo "Hola mundo desde GitHub Actions"

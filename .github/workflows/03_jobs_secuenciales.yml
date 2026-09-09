@@ -1,0 +1,34 @@
+# Nombre del Workflow
+name: Job Secuenciales
+# Evento que inicia el workflow
+on:
+  # Ejecucion cuando se haga el git push
+  push:
+    # Ramas en las que se ejecutara
+    branches:
+      # Nombre de la rama 
+      - main
+# Lista de trabajos
+jobs:
+  # Nombre del primer job
+  build:
+    # Maquina virtual donde se ejecutara
+    runs-on: ubuntu-latest
+    # Pasos del job
+    steps:
+      # Nombre del paso
+      - name: Construir Proyecto
+        # Ejecion del comando
+        run: echo "Construyendo proyecto..."
+  # Segundo job
+  test:
+    # Necesita build, esto hace que sea secuanecial, 1ro build despues test
+    needs: build
+    # Maquina virtual
+    runs-on: ubuntu-latest
+    # Pasos
+    steps:
+      # Nombre del paso
+        - name: Ejecutar tests
+          # Ejecucion de comando
+          run: echo "Ejecutando tests..."

@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-python@v5  # Prepara Python para usarlo en el workflow
         # Parametros que le pasa a la accion
         with: 
-          python-version '3.12'
+          python-version: '3.x'
       
       # Instalar librerias indicadas en el archivo requirements.txt
       - name: Instalar dependencias

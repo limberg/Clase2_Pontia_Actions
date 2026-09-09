@@ -23,7 +23,7 @@ jobs:
       
       # Instalar librerias indicadas en el archivo requirements.txt
       - name: Instalar dependencias
-        run: pin install -r proyecto/requirements.txt
+        run: pip install -r proyecto/requirements.txt
 
       - name: Ejecitar tests
         run: pytest proyecto/test_demo.py 

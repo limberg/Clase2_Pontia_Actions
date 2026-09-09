@@ -1,0 +1,33 @@
+# Nombre del Workflow
+name: Jobs en Paralelo
+# Evento que activa el workflow
+on:
+  # Ejecucion cuando se haga el git push
+  push:
+    # Ramas donde debe reaccionar el evento
+    branches:
+      # Se ejecutara cuando el push se haga sobre la rama main
+      - main
+# Lista de trabajos
+jobs:
+  # Identificador del Primer Job
+  python:
+    # GitHub crea una maquna virtual con Ubuntu, donde se ejecutara el job
+    runs-on: ubuntu-latest
+    # Pasos del job
+    steps:
+      # Nombre del paso
+      - name: Comprobar python
+        # Comando
+        run: python3 --version
+  # Nombre del Segundo job
+  node:
+    # Maquina virtual donde se ejecutara el job (no utiliza la misma maquina del primer job)
+    runs-on: ubuntu-latest
+    # Pasos del job
+    steps:
+      # Nombre del paso
+      - name: Comprobar Node.js
+        # Comando a ejcutarse
+        run: node --version
+        

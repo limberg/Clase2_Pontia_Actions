@@ -1,0 +1,29 @@
+name: Pruebas Python
+# Evento que iniciara el workflow
+on:
+  # Ejecucion cuando se haga git push
+  push:
+    # Ramas donde se ejecutara el evento
+    branches:
+      # Solo si la rama es main
+      - main
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      # Utiliza una accion ya creada por otra persona
+      - uses: actions/checkout@v4 # Descarga el contenido del repositorio y lo cooca dentro de la maquina virtual
+      
+      # Nombre del paso
+      - name: Configurar Python
+        uses: actions/setup-python@v5  # Prepara Python para usarlo en el workflow
+        # Parametros que le pasa a la accion
+        with: 
+          python-version '3.12'
+      
+      # Instalar librerias indicadas en el archivo requirements.txt
+      - name: Instalar dependencias
+        run: pin install -r proyecto/requirements.txt
+
+      - name: Ejecitar tests
+        run: pytest proyecto/test_demo.py 

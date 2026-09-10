@@ -52,7 +52,7 @@ jobs:
         # ejecuta varios comandos
         run: |
           # Actuakiza pip a la version mas reciente
-          python -m pip install -upgrade pip
+          python -m pip install --upgrade pip
           # Instalar pytest
           pip install pytest
       

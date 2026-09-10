@@ -21,9 +21,15 @@ jobs:
             --arg message "$COMMIT_MESSAGE" \
             --arg url "$COMMIT_URL" \
             --arg date "$COMMIT_DATE" \
-            '{content: "**Nuevo push por \($author)**\n**Mensaje:** \($message)\n**Fecha y hora del commit:** \($date)\n**Commit URL:** \($url)"}'
+            '{
+                content: 
+                  "**Nuevo push por \($author)**\n
+                  **Mensaje:** \($message)\n
+                  **Fecha y hora del commit:** \($date)\n
+                  **Commit URL:** \($url)"
+              }'
           )
-
+          # Curl Para eviar peticiones HTTP
           curl --fail-with-body \
                -H "Content-Type: application/json" \
                -X POST \

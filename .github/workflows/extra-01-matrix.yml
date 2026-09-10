@@ -1,0 +1,64 @@
+name: Extra 01 - Matrix Test
+
+on:
+  # El workflow se ejecutara cuando alguien haga un git push sobre la rama main.
+  push:
+    branches:
+      - main
+  # Se ejecutara cuando alguien cree, actualice o vuelva a abrir un pull request hacia main.
+  pull_request:
+    branches:
+      - main
+
+# Permisos que tendra el workflow sobre el repositorio.
+permissions:
+  # Permiso de lectura sobre el contenido del repositorio: Leer archivos, Clonar repositorio
+  contents: read 
+
+jobs:
+  # Identificador del job
+  test:
+    # Nombre del job que aparecere en GitHub
+    name: Test Python ${{ matrix.python-version }}
+    runs-on: ubuntu-test
+
+    # Define como debe ejecutarse el job
+    strategy:
+      # Por defecto si uno de los jobs de la matrix falla, GitHb cancela los demas
+      # Con fail-fast: false auque uno version falle, las otras continuan ejecutandos.
+      fail-fast: false
+      # Definicion de Matrix
+      matrix:
+        # Variable que cambiara en cada ejecucion
+        python-version: ['3.10', '3.11', '3.12'] # GitHub generara automaticamente tres ejecuciones.
+    
+    steps: # Cada version de python ejecutara los mismos pasos en este workflow.
+      # Nombre del paso
+      - name: Checkout
+      # Descarga el contenido del repositorio dentro de la maquina virtual
+        uses: actions/checkout@v4
+      
+      - name: Configurar Python
+        # Utiliza la accion oficial para instalar/configurar Python
+        uses: actions/setup-python@v5
+        # Parametros
+        with:
+          # Se ejecuta 3 instalaciones, cada una por la version de Python.
+          python-version: ${{ matrix.python-version }}
+          # GitHub guarda en cache las dependencias instaöadas con pip
+          cache: pip
+
+      - name: Instalar dependencias
+        # ejecuta varios comandos
+        run: |
+          # Actuakiza pip a la version mas reciente
+          python -m pip install -upgrade pip
+          # Instalar pytest
+          pip install pytest
+      
+      - name: Ejecutar test
+        # Ejecutara todas los archivos de prueba que empicen con test* tambien en subdirectorios del proyecto
+        run: pytest
+
+
+

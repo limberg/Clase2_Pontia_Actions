@@ -20,7 +20,7 @@ jobs:
   test:
     # Nombre del job que aparecere en GitHub
     name: Test Python ${{ matrix.python-version }}
-    runs-on: ubuntu-test
+    runs-on: ubuntu-latest
 
     # Define como debe ejecutarse el job
     strategy:

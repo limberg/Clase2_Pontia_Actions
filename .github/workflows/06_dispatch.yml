@@ -1,0 +1,22 @@
+name: Workflow Manual
+# Indica el evento que inicia el workflow
+on:
+  # Ejecucion manial del workflow desde GitHub
+  workflow_dispatch:
+    # Parametros de entrada
+    inputs:
+      # Nombre del parametro
+      nombre:
+        # Descricion para indicar el usuario qu debe escribir
+        descripcion: 'Tu nombre'
+        # Campo obligatorio
+        required: true
+        # Pro defecto el nombre sera Alumno
+        default: 'Alumno'
+
+jobs:
+  saludo:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Saludo personalizado
+      run: echo "Hola, ${{ github.event.inputs.nombre }}"

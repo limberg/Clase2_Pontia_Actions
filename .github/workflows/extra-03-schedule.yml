@@ -1,0 +1,28 @@
+name: Extra 03 - Scheduled Check
+# Define cuando se ejecuta el workflow
+on:
+  # Ejecucion automatica con cron
+  schedule:
+    # 0 8 * * 1
+    # │ │ │ │ │
+    # │ │ │ │ └── Día de la semana: lunes (1)
+    # │ │ │ └──── Mes: cualquier mes
+    # │ │ └────── Día del mes: cualquier día
+    # │ └──────── Hora: 08
+    # └────────── Minuto: 00
+    - cron: '0 8 * * 1' # Ejecutar todos los lunes a las 8:00 UTC
+      workflow_dispatch: # Ejecucion manual, aniade un boton en GitHub
+                         # Simple para ejecutarlo cuando uno quiera
+
+permissions:
+  contents: read # Puede leer y descargar el contenido del repositorio
+
+jobs:
+  schedule-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mostrar Fecha
+        run: date -u # -u significa UTC - ejemplo: Mon Sep 14 08:00:02 UTC 2026
+      
+      - name: Ejecutar comprobacion
+        run: echo "Comprobacion programada ejecutada correctamente"

@@ -19,14 +19,14 @@ jobs:
     
     steps:
       - name: Checkout
-        # Descarga el contenido del repositori a la maquina virtual
+        # Descarga el contenido del repositorio a la maquina virtual
         uses: actions/checkout@v4
 
       - name: Mostrar contexto
         run: | # Ejecutara varias comandos de Bash
           echo "Evento: ${{ github.event_name }}" # Evento que se ejecuta pull_request
           echo "Rama origen: ${{ github.head_ref }}" # desde 
-          echo "Rama destino: ${{ hithub.base_ref }}" # hacia
+          echo "Rama destino: ${{ github.base_ref }}" # hacia
 
       - name: Validacion simple
         run: |

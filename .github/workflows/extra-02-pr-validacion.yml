@@ -1,0 +1,35 @@
+name: Extra 02 - PR Validacion
+
+# Indica el evento que activara el workflow
+on:
+  # Se ejecuta cuando ocurre un evento PR: Crear, actualizar o reabrir un pull request.
+  pull_request:
+    branches:
+      - main
+
+# Persmisos que tendra el workflow
+permissions:
+  # Le da el permiso para leer o descargar contenido del repositrio.
+  contents: read
+
+jobs:
+  # Identificador del Job
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        # Descarga el contenido del repositori a la maquina virtual
+        uses: actions/checkout@v4
+
+      - name: Mostrar contexto
+        run: | # Ejecutara varias comandos de Bash
+          echo "Evento: ${{ github.event_name }}" # Evento que se ejecuta pull_request
+          echo "Rama origen: ${{ github.head_ref }}" # desde 
+          echo "Rama destino: ${{ hithub.base_ref }}" # hacia
+
+      - name: Validacion simple
+        run: |
+          # Comando linux que comprueba si existe el archivo README.md
+          test -f README.md 
+ 

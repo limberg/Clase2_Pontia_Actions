@@ -11,8 +11,8 @@ on:
     # │ └──────── Hora: 08
     # └────────── Minuto: 00
     - cron: '0 8 * * 1' # Ejecutar todos los lunes a las 8:00 UTC
-      workflow_dispatch: # Ejecucion manual, aniade un boton en GitHub
-                         # Simple para ejecutarlo cuando uno quiera
+  workflow_dispatch: # Ejecucion manual, aniade un boton en GitHub
+                     # Simple para ejecutarlo cuando uno quiera
 
 permissions:
   contents: read # Puede leer y descargar el contenido del repositorio

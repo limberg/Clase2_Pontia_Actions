@@ -88,3 +88,5 @@ Incluye:
 - Revisa los logs por job y por step.
 - Trabaja con workflows pequeños y fáciles de depurar.
 - Trata la IA como una herramienta de apoyo, no como una sustitución de la revisión humana.
+
+## Modificando Readme para test pull request

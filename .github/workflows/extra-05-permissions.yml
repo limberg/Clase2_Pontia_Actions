@@ -13,10 +13,10 @@ jobs:
   security-check:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Comprobar permisos minimos
-      run: |
-        echo "Este workflow solo necesita leer contenido del repositorio" 
+      - name: Comprobar permisos minimos
+        run: |
+          echo "Este workflow solo necesita leer contenido del repositorio" 

@@ -1,0 +1,29 @@
+name: Extra 07 - Simulated deploy
+
+on:
+  workflow_dispatch:
+    # Dato que el usuario debe proporcionar ntes de ejecutar el workflow
+    inputs:
+      environment:
+        description: 'Entorno de despliegue'
+        required: true
+        type: choice
+        options:
+          - development # Servidor de desarrollo 
+          - staging # Servidor de preproduccion
+          - production # Servidor real del cliente
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    enviroment: ${{ inputs.environment }}
+
+    steps:
+      - name: Simular build
+        run: echo "Build completado" # En un proyecto real aqui podria ejcutarse "dotnet build", "npm run build", "mvn package", etc.
+
+      - name: Simular deploy
+        run: echo "Deploy realizado en ${{ inputs.environment}}"

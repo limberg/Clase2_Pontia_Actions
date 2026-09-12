@@ -8,7 +8,7 @@ on:
       # Nombre del parametro
       python-version:
         description: 'Version de Python'
-        requerid: true
+        required: true
         type: string
 
 permissions:
